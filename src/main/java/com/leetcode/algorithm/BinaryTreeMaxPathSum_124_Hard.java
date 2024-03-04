@@ -112,7 +112,7 @@ public class BinaryTreeMaxPathSum_124_Hard {
     }
 
     //  Definition for a binary tree node.
-      public class TreeNode {
+/*      public class TreeNode {
           int val;
           TreeNode left;
           TreeNode right;
@@ -123,5 +123,5 @@ public class BinaryTreeMaxPathSum_124_Hard {
               this.left = left;
               this.right = right;
           }
-      }
+      }*/
 }
