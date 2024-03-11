@@ -2,9 +2,8 @@ package com.leetcode.algorithm;
 
 import org.junit.Assert;
 import org.junit.Test;
-
 /**
- * 86. 分隔链表 https://leetcode.cn/problems/partition-list/description/
+ * 86.分隔链表 https://leetcode.cn/problems/partition-list/description/
  * 给你一个链表的头节点 head 和一个特定值 x ，请你对链表进行分隔，使得所有 小于 x 的节点都出现在 大于或等于 x 的节点之前。
  * 你应当 保留 两个分区中每个节点的初始相对位置。
  *
@@ -40,7 +39,7 @@ public class PartitionList_86_Medium {
 
 
     /**
-     * 分隔链表
+     * 分割链表
      * @param head
      * @param x
      * @return
@@ -63,9 +62,11 @@ public class PartitionList_86_Medium {
                 p1.next = p;
                 p1 = p1.next;
             }
-            // 不能直接让 p 指针前进，
-            // p = p.next
-            // 断开原链表中的每个节点的 next 指针
+            /*
+             p = p.next
+             断开原链表中的每个节点的 next 指针
+             不能直接让 p 指针前进，
+             */
             ListNode temp = p.next;
             p.next = null;
             p = temp;
