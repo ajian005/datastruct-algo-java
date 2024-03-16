@@ -1,4 +1,4 @@
-package com.data.struct.basic;
+package com.data.struct.basic.tree;
 
 import org.junit.Test;
 
