@@ -174,6 +174,132 @@ public class BinaryTree {
         }
     }
 
+    /**
+     * Function to delete deepest element in binary tree
+     * @return
+     */
+    public static void deleteDeepest(Node root, Node delNode) {
+        Queue<Node>  q = new LinkedList<>();
+        q.add(root);
+
+        Node temp = null;
+
+        // Do level order traversal until last node
+        while (!q.isEmpty()) {
+            temp = q.peek();
+            q.remove();
+
+            if (temp == delNode) {
+                temp = null;
+                return;
+            }
+
+            if (temp.right != null) {
+                if (temp.right == delNode) {
+                    temp.right = null;
+                    return;
+                } else {
+                    q.add(temp.right);
+                }
+            }
+
+            if (temp.left != null) {
+                if (temp.left == delNode) {
+                    temp.left = null;
+                    return;
+                } else {
+                    q.add(temp.left);
+                }
+            }
+        }
+    }
+
+    /**
+     * Function to delete given element in binary tree
+     * @return
+     */
+    public void delete(Node root, int key) {
+        if (root == null) {
+            return;
+        }
+        if (root.left == null && root.right == null) {
+            if (root.key == key) {
+                root = null;
+                return;
+            } else {
+                return;
+            }
+        }
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        Node temp = null, keyNode = null;
+
+        // Do level order traveral until
+        // we find key and last node.
+        while (!q.isEmpty()) {
+            temp = q.peek();
+            q.remove();
+
+            if (temp.key == key) {
+                keyNode = temp;
+            }
+
+            if (temp.left != null) {
+                q.add(temp.left);
+            }
+
+            if (temp.right != null) {
+                q.add(temp.right);
+            }
+
+            if (keyNode != null) {
+                int x = temp.key;;
+                keyNode.key = x;
+                deleteDeepest(root, temp);
+            }
+        }
+    }
+
+    /**
+     * Function to print the spiral traversal of tree
+     */
+    public void printSpiral(Node node) {
+        int h = maxDepth(node);
+        /**
+         * ltr -> left to right.
+         * If this variable is set then the given label is traversed from left to right
+         */
+        boolean ltr = false;
+        for (int i = 1; i <= h; i++) {
+            printGivenLevel(node, i, ltr);
+            /**
+             * Revert ltr traverse next level in opposite order
+             */
+            ltr = !ltr;
+        }
+    }
+
+    /**
+     * Print nodes at a given level
+     * @return
+     */
+    public void printGivenLevel(Node node, int level, boolean ltr) {
+        if (node == null) {
+            return;
+        }
+        if (level == 1) {
+            System.out.print(node.key + " ");
+        } else if (level > 1) {
+            if (ltr != false) {
+                printGivenLevel(node.left, level - 1, ltr);
+                printGivenLevel(node.right, level - 1, ltr);
+            } else {
+                printGivenLevel(node.right, level - 1, ltr);
+                printGivenLevel(node.left, level - 1, ltr);
+            }
+        }
+    }
+
 
     public BinaryTree createBinaryTree() {
         BinaryTree tree = new BinaryTree();
