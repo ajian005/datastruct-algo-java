@@ -1,4 +1,4 @@
-package com.data.struct.basic.sort;
+package com.data.struct.basic.sort.mergesort.demo1;
 
 /**
  * 把两个有序数组合并为一个有序数组

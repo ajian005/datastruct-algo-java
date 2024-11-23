@@ -1,4 +1,4 @@
-package com.data.struct.basic.sort;
+package com.data.struct.basic.sort.mergesort.demo1;
 
 /**
  * 合并排序
