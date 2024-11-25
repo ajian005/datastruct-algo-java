@@ -1,4 +1,4 @@
-package com.data.struct.basic.sort;
+package com.data.struct.basic.sort.quickSort;
 
 /**
  * https://www.geeksforgeeks.org/quick-sort/?ref=lbp
