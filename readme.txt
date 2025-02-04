@@ -5,3 +5,5 @@
 3 LeetCode: https://leetcode.cn/
 4《Java数据结构和算法》
 5 https://labuladong.online/
+6 《剑指Offer》
+7 《程序员面试金典(第6版)》

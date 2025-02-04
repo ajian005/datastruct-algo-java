@@ -5,8 +5,79 @@ import org.junit.Test;
 /**
  * 斐波那契数 （通常用 F(n) 表示）形成的序列称为 斐波那契数列 。
  * https://leetcode.cn/problems/fibonacci-number/description/
+ * 普通递归 -> dp剪枝 -> 优化空间
+ * native recursion --> memoization --> dp
+ *
+ * 类似题目:
+ * LCR 126. 斐波那契数  https://leetcode.cn/problems/fei-bo-na-qi-shu-lie-lcof/description/
  */
 public class FibonacciSequence_509_Easy {
+    /**
+     * 斐波那契数 方法二：矩阵快速幂
+     * https://leetcode.cn/problems/fei-bo-na-qi-shu-lie-lcof/solutions/976888/fei-bo-na-qi-shu-lie-by-leetcode-solutio-hbss/
+     * 复杂度分析:
+     *    时间复杂度：O(logn)。
+     *    空间复杂度：O(1)。
+     */
+    @Test
+    public void testFib6() {
+        int fibValue = fib6(100);
+        System.out.println(fibValue);
+    }
+        static final int MOD = 1000000007;
+
+        public int fib6(int n) {
+            if (n < 2) {
+                return n;
+            }
+            int[][] q = {{1, 1}, {1, 0}};
+            int[][] res = pow(q, n - 1);
+            return res[0][0];
+        }
+
+        public int[][] pow(int[][] a, int n) {
+            int[][] ret = {{1, 0}, {0, 1}};
+            while (n > 0) {
+                if ((n & 1) == 1) {
+                    ret = multiply(ret, a);
+                }
+                n >>= 1;
+                a = multiply(a, a);
+            }
+            return ret;
+        }
+
+        public int[][] multiply(int[][] a, int[][] b) {
+            int[][] c = new int[2][2];
+            for (int i = 0; i < 2; i++) {
+                for (int j = 0; j < 2; j++) {
+                    c[i][j] = (int) (((long) a[i][0] * b[0][j] + (long) a[i][1] * b[1][j]) % MOD);
+                }
+            }
+            return c;
+        }
+    /**
+     * 答案需要取模 1e9+7(1000000007) ，如计算初始结果为：1000000008，请返回 1。
+     */
+    @Test
+    public void testFib5() {
+        int fibValue = fib5(100);
+        System.out.println(fibValue);
+    }
+
+    public int fib5(int n) {
+        int mod = 1000000007;
+        int a = 0, b = 1, sum;
+        for(int i = 0; i < n; i++){
+            sum = a + b;
+            sum = sum % mod;
+            a = b;
+            b = sum;
+        }
+        return a;
+    }
+
+
     /**
      * 动态规划 dp状态压缩：
      * 509. 斐波那契数（动态规划，清晰图解）
