@@ -1,5 +1,8 @@
 package com.leetcode.algorithm;
 
+import java.util.HashMap;
+import java.util.Map;
+
 class RadomNode {
     public int value;
     // 下一个节点
@@ -66,7 +69,7 @@ public class CopyListWithRandomPointer_138_Medium {
         System.out.println("null");
     }
 
-    public RadomNode copyRandomList(RadomNode head) {
+    public RadomNode copyRandomList2(RadomNode head) {
         RadomNode dummy = new RadomNode(-1);
         RadomNode pre = dummy;
         RadomNode current = head;
@@ -77,6 +80,29 @@ public class CopyListWithRandomPointer_138_Medium {
             current = current.next;
         }
         return dummy.next;
+    }
+
+    public RadomNode copyRandomList(RadomNode head) {
+        // 创建一个HashMap来存储原始节点和复制节点的映射关系
+        Map<RadomNode, RadomNode> map = new HashMap<>();
+        RadomNode current = head;
+        while (current != null) {
+            RadomNode copyNode = new RadomNode(current.value);
+            map.put(current, copyNode);
+            current = current.next;
+        }
+
+        current = head;
+        while (current != null) {
+            // 遍历原始链表，为每个节点创建一个复制节点，并保存映射关系
+            RadomNode copyNode = map.get(current);
+            copyNode.next = map.get(current.next);
+
+            // 遍历复制链表，为每个复制节点设置随机节点的映射关系
+            copyNode.randomNode = map.get(current.randomNode);
+            current = current.next;
+        }
+        return map.get(head);
     }
 
 
