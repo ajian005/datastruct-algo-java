@@ -9,3 +9,9 @@
 ## 5 https://labuladong.online/
 ## 6 《剑指Offer》
 ## 7 《程序员面试金典(第6版)》
+
+## 算法相关github地址
+ - https://github.com/krahets/hello-algo
+ - 《剑指 Offer》 Python, Java, C++ 解题代码，LeetBook《图解算法数据结构》配套代码仓   
+https://github.com/krahets/LeetCode-Book
+ - https://github.com/geekxh/hello-algorithm
