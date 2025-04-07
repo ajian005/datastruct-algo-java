@@ -1,4 +1,4 @@
-package com;
+package com.data.struct.basic;
 
 import java.util.Scanner;
 

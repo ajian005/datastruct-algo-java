@@ -1,4 +1,4 @@
-package com;
+package com.data.struct.basic;
 
 /**
  *   打印三角形 如 n = 2

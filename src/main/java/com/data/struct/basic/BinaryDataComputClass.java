@@ -1,7 +1,7 @@
-package com;
+package com.data.struct.basic;
 
 import com.leetcode.algorithm.LinkNodee;
-import com.leetcode.algorithm.ListNode;
+
 /**
  * 两个数 如3 + 4 = 7
  * 用两个链表二进制表示这两数并进行计算
