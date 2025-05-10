@@ -39,6 +39,12 @@ public class LowestCommonAncestorOfABinaryTree_236_Medium {
         }
     }
 
+    @Test
+    public void useCase001() {
+        TreeNode3 node3 = constructTree();
+    }
+
+
     public TreeNode3 lowestCommonAncestor(TreeNode3 root, TreeNode3 p, TreeNode3 q) {
         dfs(root);
         while (p != null) {
@@ -46,7 +52,7 @@ public class LowestCommonAncestorOfABinaryTree_236_Medium {
             p = parent.get(p.val);
         }
         while (q != null) {
-            if (visited.contains(q)) {
+            if (visited.contains(q.val)) {
                 return q;
             }
             q = parent.get(q.val);
